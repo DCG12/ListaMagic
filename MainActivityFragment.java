@@ -12,6 +12,8 @@ import android.widget.ListView;
  */
 public class MainActivityFragment extends Fragment {
 
+    private int num;
+
     public MainActivityFragment() {
     }
 
