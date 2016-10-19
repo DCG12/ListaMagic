@@ -13,6 +13,7 @@ import android.support.annotation.Nullable;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.util.Log;
 
 /**
  * A placeholder fragment containing a simple view.
@@ -81,5 +82,9 @@ public class MainActivityFragment extends Fragment {
                         return super.onOptionsItemSelected(item);
             }
                 private void refresh() {
+                    Cards2016 api = new Cards2016();
+                            String result = api.getCartes("es");
+
+                                    Log.d("DEBUG", result);
             }
 }
