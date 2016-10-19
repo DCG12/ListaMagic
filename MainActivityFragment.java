@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.ArrayAdapter;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * A placeholder fragment containing a simple view.
@@ -31,6 +32,17 @@ public class MainActivityFragment extends Fragment {
         ListView lvCards = (ListView) view.findViewById(R.id.lvCards);
 
         items = new ArrayList<>();
+
+        String[] data = {
+                                "Golem arcano",
+                                "Dragon de fuego",
+                                "Goblin de las montañas",
+                                "Angel guardian",
+                                "Fuego eterno",
+                                };
+
+                        items = new ArrayList<>(Arrays.asList(data));
+
                adapter = new ArrayAdapter<>(
                                getContext(),
                                R.layout.ls_cards_rows,
