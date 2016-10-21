@@ -14,6 +14,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.util.Log;
+import android.os.AsyncTask;
 
 /**
  * A placeholder fragment containing a simple view.
@@ -82,9 +83,32 @@ public class MainActivityFragment extends Fragment {
                         return super.onOptionsItemSelected(item);
             }
                 private void refresh() {
-                    Cards2016 api = new Cards2016();
-                            String result = api.getCartes("es");
+                    RefreshDataTask task = new RefreshDataTask();
+                    task.execute();
 
-                                    Log.d("DEBUG", result);
             }
+        private class RefreshDataTask extends AsyncTask<Void, Object, ArrayList<Card>> {
+            @Override
+            protected ArrayList<Card> doInBackground(Void... voids) {
+                Cards2016 api = new Cards2016();
+                ArrayList<Card> result = api.getAllCards();
+
+                Log.d("DEBUG", result.toString());
+
+                return result;
+            }
+
+            @Override
+            protected void onPostExecute(ArrayList<Card> carta) {
+
+                super.onPostExecute(carta);
+
+                adapter.clear();
+                    for (int i = 0; i < carta.size(); i++) {
+                        adapter.add(carta.get(i).getName());
+                    }
+
+
+            }
+        }
 }
