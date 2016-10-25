@@ -107,8 +107,6 @@ public class MainActivityFragment extends Fragment {
                     for (int i = 0; i < carta.size(); i++) {
                         adapter.add(carta.get(i).getName());
                     }
-
-
             }
         }
 }
